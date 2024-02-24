@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyEmployees", "Company
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{D4E3C3EE-94D8-4923-8A8C-0B086EC6AD70}"
 	ProjectSection(SolutionItems) = preProject
-		nlog.config.txt = nlog.config.txt
+		nlog.config = nlog.config
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "..\LoggerService\LoggerService\LoggerService.csproj", "{8CABD61E-78DA-4A21-9BD6-F1D4E89B013D}"
