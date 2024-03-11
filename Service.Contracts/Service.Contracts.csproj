@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities\Entities.csproj" />
+    <ProjectReference Include="..\..\Books-Wed-API\Shared\Shared.csproj" />
   </ItemGroup>
 
 </Project>
