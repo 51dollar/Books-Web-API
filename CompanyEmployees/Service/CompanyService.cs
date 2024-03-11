@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Contracts;
-using Entities;
 using Shared.DataTransferObjects;
 
 namespace Service
