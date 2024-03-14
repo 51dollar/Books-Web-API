@@ -16,7 +16,6 @@ namespace CompanyEmployees.Presentation.Controllers
         public IActionResult GetCompanies()
         {
             var companies = _service.CompanyService.GetAllCompanies(trackChanges: false);
-
             return Ok(companies);
         }
 
