@@ -25,6 +25,7 @@ namespace CompanyEmployees
                 config.RespectBrowserAcceptHeader = true;
                 config.ReturnHttpNotAcceptable = true;
             }).AddXmlDataContractSerializerFormatters()
+            .AddCustomCSVFormatter()
             .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
 
             var app = builder.Build();
