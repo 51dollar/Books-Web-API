@@ -1,4 +1,5 @@
-﻿using Shared.DataTransferObjects;
+﻿using Entities.Models;
+using Shared.DataTransferObjects;
 
 namespace Service
 {
@@ -10,5 +11,8 @@ namespace Service
         void DeleteEmployeeForCompany(Guid companyId, Guid id, bool trackChanges);
         void UpdateEmployeeForCompany(Guid companyId, Guid id,
             EmployeeForUpdateDto employeeForUpdate, bool compTrackChanges, bool empTrackChanges);
+        (EmployeeForUpdateDto employeeToPatch, Employee employeeEntity) GetEmployeeForPatch(
+            Guid companyId, Guid id, bool compTrackChanges, bool empTrackChanges);
+        void SaveChangesForPatch(EmployeeForUpdateDto employeeToPatch, Employee employeeEntity);
     }
 }
