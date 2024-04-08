@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Options;
 using NLog;
+using Service.DataShaping;
+using Shared.DataTransferObjects;
 
 namespace CompanyEmployees
 {
@@ -31,6 +33,8 @@ namespace CompanyEmployees
             });
 
             builder.Services.AddScoped<ValidationFilterAttribute>();
+
+            builder.Services.AddScoped<IDataShaper<EmployeeDto>, DataShaper<EmployeeDto>>();
 
             builder.Services.AddControllers(config => {
                 config.RespectBrowserAcceptHeader = true;
