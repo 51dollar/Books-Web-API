@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using Service;
+using Microsoft.AspNetCore.Mvc.Versioning;
+using CompanyEmployees.Presentation.Controllers;
 
 namespace CompanyEmployees.Extensions
 {
@@ -76,6 +78,11 @@ namespace CompanyEmployees.Extensions
                 opt.ReportApiVersions = true;
                 opt.AssumeDefaultVersionWhenUnspecified = true;
                 opt.DefaultApiVersion = new ApiVersion(1, 0);
+                opt.ApiVersionReader = new HeaderApiVersionReader("api-version");
+                opt.Conventions.Controller<CompaniesController>()
+                    .HasApiVersion(new ApiVersion(1, 0));
+                opt.Conventions.Controller<CompaniesV2Controller>()
+                    .HasDeprecatedApiVersion(new ApiVersion(2, 0));
             });
         }
     }
