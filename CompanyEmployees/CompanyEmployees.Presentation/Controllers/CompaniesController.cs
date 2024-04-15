@@ -6,6 +6,7 @@ using CompanyEmployees.Presentation.ActionFilters;
 
 namespace CompanyEmployees.Presentation.Controllers
 {
+    [ApiVersion("1.0")]
     [Route("api/companies")]
     [ApiController]
     public class CompaniesController : ControllerBase
