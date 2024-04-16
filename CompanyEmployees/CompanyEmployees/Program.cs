@@ -40,11 +40,13 @@ namespace CompanyEmployees
             builder.Services.AddScoped<IEmployeeLinks, EmployeeLinks>();
 
             builder.Services.ConfigureVersioning();
+            builder.Services.ConfigureResponseCaching();
 
             builder.Services.AddControllers(config => {
                 config.RespectBrowserAcceptHeader = true;
                 config.ReturnHttpNotAcceptable = true;
                 config.InputFormatters.Insert(0, GetJsonPatchInputFormatter());
+                config.CacheProfiles.Add("120SecondsDuration", new CacheProfile { Duration = 120 });
             }).AddXmlDataContractSerializerFormatters()
             .AddCustomCSVFormatter()
             .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
@@ -67,6 +69,7 @@ namespace CompanyEmployees
             });
 
             app.UseCors("CorsPolicy");
+            app.UseResponseCaching();
 
             app.UseAuthorization();
 
