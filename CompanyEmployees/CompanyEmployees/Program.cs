@@ -48,6 +48,9 @@ namespace CompanyEmployees
             builder.Services.ConfigureRateLimitingOptions();
             builder.Services.AddHttpContextAccessor();
 
+            builder.Services.AddAuthentication();
+            builder.Services.ConfigureIdentity();
+
             builder.Services.AddControllers(config => {
                 config.RespectBrowserAcceptHeader = true;
                 config.ReturnHttpNotAcceptable = true;
@@ -79,6 +82,7 @@ namespace CompanyEmployees
             app.UseResponseCaching();
             app.UseHttpCacheHeaders();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();
