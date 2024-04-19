@@ -7,6 +7,7 @@ using Repository;
 using Service;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using CompanyEmployees.Presentation.Controllers;
+using Marvin.Cache.Headers;
 
 namespace CompanyEmployees.Extensions
 {
@@ -23,7 +24,7 @@ namespace CompanyEmployees.Extensions
 
         public static void ConfigureIISIntegration(this IServiceCollection services) =>
             services.Configure<IISOptions>(options =>
-        {});
+        { });
 
         public static void ConfigureLoggerService(this IServiceCollection services) =>
             services.AddSingleton<ILoggerManager, LoggerManager>();
@@ -42,16 +43,13 @@ namespace CompanyEmployees.Extensions
         public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
             builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
 
-        public static void ConfigureResponseCaching(this IServiceCollection services) =>
-            services.AddResponseCaching();
-
         public static void AddCustomMediaTypes(this IServiceCollection services)
         {
             services.Configure<MvcOptions>(config =>
             {
                 var systemTextJsonOutputFormatter = config.OutputFormatters
                 .OfType<SystemTextJsonOutputFormatter>()?.FirstOrDefault();
-                
+
                 if (systemTextJsonOutputFormatter != null)
                 {
                     systemTextJsonOutputFormatter.SupportedMediaTypes
@@ -88,5 +86,18 @@ namespace CompanyEmployees.Extensions
                     .HasDeprecatedApiVersion(new ApiVersion(2, 0));
             });
         }
+        public static void ConfigureResponseCaching(this IServiceCollection services) =>
+            services.AddResponseCaching();
+
+        public static void ConfigureHttpCacheHeaders(this IServiceCollection services) =>
+        services.AddHttpCacheHeaders((expirationOpt) =>
+        {
+            expirationOpt.MaxAge = 65;
+            expirationOpt.CacheLocation = CacheLocation.Private;
+        },
+        (validationOpt) =>
+        {
+            validationOpt.MustRevalidate = true;
+        });
     }
 }

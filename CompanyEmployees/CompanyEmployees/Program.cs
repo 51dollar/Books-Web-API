@@ -41,6 +41,7 @@ namespace CompanyEmployees
 
             builder.Services.ConfigureVersioning();
             builder.Services.ConfigureResponseCaching();
+            builder.Services.ConfigureHttpCacheHeaders();
 
             builder.Services.AddControllers(config => {
                 config.RespectBrowserAcceptHeader = true;
@@ -70,6 +71,7 @@ namespace CompanyEmployees
 
             app.UseCors("CorsPolicy");
             app.UseResponseCaching();
+            app.UseHttpCacheHeaders();
 
             app.UseAuthorization();
 
