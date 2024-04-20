@@ -110,7 +110,7 @@ namespace CompanyEmployees.Extensions
                 new RateLimitRule
                 {
                     Endpoint = "*",
-                    Limit = 10,
+                    Limit = 50,
                     Period = "5m"
                 }
             };
