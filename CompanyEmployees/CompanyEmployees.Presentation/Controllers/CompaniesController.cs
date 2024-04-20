@@ -4,6 +4,7 @@ using Shared.DataTransferObjects;
 using CompanyEmployees.Presentation.ModelBinders;
 using CompanyEmployees.Presentation.ActionFilters;
 using Marvin.Cache.Headers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CompanyEmployees.Presentation.Controllers
 {
@@ -18,6 +19,7 @@ namespace CompanyEmployees.Presentation.Controllers
             _service = service;
 
         [HttpGet(Name = "GetCompanies")]
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> GetCompanies()
         {
             var companies = await _service.CompanyService.GetAllCompaniesAsync(trackChanges: false);
