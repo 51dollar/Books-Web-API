@@ -14,7 +14,7 @@ namespace CompanyEmployees.Presentation.Controllers
         [HttpGet(Name = "GetRoot")]
         public IActionResult GetRoot([FromHeader(Name = "Accept")] string mediaType)
         {
-            if (mediaType.Contains("application/vnd.codemaze.apiroot"))
+            if (mediaType.Contains("application/CompanyEmployeesApi.apiroot"))
             {
                 var list = new List<Link>
                 {

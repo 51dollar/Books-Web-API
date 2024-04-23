@@ -59,9 +59,9 @@ namespace CompanyEmployees.Extensions
                 if (systemTextJsonOutputFormatter != null)
                 {
                     systemTextJsonOutputFormatter.SupportedMediaTypes
-                    .Add("application/vnd.codemaze.hateoas+json");
+                    .Add("application/CompanyEmployeesApi.hateoas+json");
                     systemTextJsonOutputFormatter.SupportedMediaTypes
-                    .Add("application/vnd.codemaze.apiroot+json");
+                    .Add("application/CompanyEmployeesApi.apiroot+json");
                 }
 
                 var xmlOutputFormatter = config.OutputFormatters
@@ -71,9 +71,9 @@ namespace CompanyEmployees.Extensions
                 if (xmlOutputFormatter != null)
                 {
                     xmlOutputFormatter.SupportedMediaTypes
-                    .Add("application/vnd.codemaze.hateoas+xml");
+                    .Add("application/CompanyEmployeesApi.hateoas+xml");
                     xmlOutputFormatter.SupportedMediaTypes
-                    .Add("application/vnd.codemaze.apiroot+xml");
+                    .Add("application/CompanyEmployeesApi.apiroot+xml");
                 }
             });
         }
