@@ -53,6 +53,8 @@ namespace CompanyEmployees
             builder.Services.ConfigureJWT(builder.Configuration);
             builder.Services.AddJwtConfiguration(builder.Configuration);
 
+            builder.Services.ConfigureSwagger();
+
             builder.Services.AddControllers(config => {
                 config.RespectBrowserAcceptHeader = true;
                 config.ReturnHttpNotAcceptable = true;
@@ -86,6 +88,13 @@ namespace CompanyEmployees
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(s =>
+            {
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "Company Employees API v1");
+                s.SwaggerEndpoint("/swagger/v2/swagger.json", "Company Employees API v2");
+            });
 
             app.MapControllers();
 

@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Entities.ConfigurationModels;
+using Microsoft.OpenApi.Models;
 
 namespace CompanyEmployees.Extensions
 {
@@ -170,5 +171,14 @@ namespace CompanyEmployees.Extensions
 
         public static void AddJwtConfiguration(this IServiceCollection services, IConfiguration configuration) =>
                 services.Configure<JwtConfiguration>(configuration.GetSection("JwtSettings"));
+
+        public static void ConfigureSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1", new OpenApiInfo { Title = "Company Employees API", Version = "v1" });
+                s.SwaggerDoc("v2", new OpenApiInfo { Title = "Company Employees API", Version = "v2" });
+            });
+        }
     }
 }
