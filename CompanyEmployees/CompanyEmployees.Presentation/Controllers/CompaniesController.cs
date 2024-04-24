@@ -19,6 +19,10 @@ namespace CompanyEmployees.Presentation.Controllers
         public CompaniesController(IServiceManager service) =>
             _service = service;
 
+        /// <summary>
+        /// Gets the list of all companies
+        /// </summary>
+        /// <returns>The companies list</returns>
         [HttpGet(Name = "GetCompanies")]
         [Authorize(Roles = "Manager")]
         public async Task<IActionResult> GetCompanies()
@@ -45,6 +49,11 @@ namespace CompanyEmployees.Presentation.Controllers
             return Ok(companies);
         }
 
+        /// <summary>
+        /// Creates a newly created company
+        /// </summary>
+        /// /// <param name="company"></param>
+        /// <returns>A newly created company</returns>
         [HttpPost(Name = "CreateCompany")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateCompany([FromBody] CompanyForCreationDto company)
