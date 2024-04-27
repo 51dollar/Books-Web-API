@@ -164,7 +164,7 @@ namespace CompanyEmployees.Extensions
                     ValidateIssuerSigningKey = true,
 
                     ValidIssuer = jwtConfiguration.ValidIssuer,
-                    ValidAudience = jwtConfiguration.ValidIssuer,
+                    ValidAudience = jwtConfiguration.ValidAudience,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                 };
             });
