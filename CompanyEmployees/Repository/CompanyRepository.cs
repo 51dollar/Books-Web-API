@@ -15,6 +15,7 @@ namespace Repository
 
         public async Task<Company> GetCompanyAsync(Guid companyId, bool trackChanges) =>
             await FindByCondition(c => c.Id.Equals(companyId), trackChanges)
+            .Include(c => c.Employees)
             .SingleOrDefaultAsync();
 
         public void CreateCompany(Company company) => Create(company);
